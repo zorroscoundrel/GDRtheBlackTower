@@ -17,9 +17,11 @@ let xp = 0;
 let goldCoins = 0;
 
 //art
-const asciiArt = `
-                                *~~
-                                |~~
+const asciiArt = `              
+
+                                *
+                                |~~~
+                                |~~~
                         --_--_--__--_--
                         [   |     |   ]
                          |^ ^ ^ ^ ^ ^|
@@ -29,7 +31,7 @@ const asciiArt = `
                          |    ___    |   by Zorroscoundrel
                          |    | |    |
                          |           |
-                    _____|           |_____
+                    .....|           |.....
    `
 console.log(asciiArt);
 
@@ -96,15 +98,13 @@ case '1':
 // get to the Tower
 function takePath () {
     console.log ('\n ---------------------------- \nYou take another trail in the swamps. You suddenly see a light in the distance. ');
-rl.question ('1.Keep walking towards the light, time to explore!\n2.Better to rest now.You set the camp.The next morning you are ready to go', (choice) => {
+rl.question ('1.Keep walking towards the light, time to explore!', (choice) => {
 
   if (choice === '1') {
     console.log(chalk.blue.bgRed.bold(`\n"II Chapter: The Tower"`));
 
     console.log('You lead the group, walking slowly. In the distance you start to see what looks like an old stone tower.\nThe light comes from a candle at the top floor. Strange.');
     exploreTower();
-  } else if (choice === '2') {
-    takePath ();
   } else {
     console.log('Error');
     moveOverThere();
@@ -218,7 +218,7 @@ console.log(asciiArt);
   } else if (character === 'Roland the Mage') {
     rl.question('1. Cast a fireball\n2. Convince the troll to go away\n', (choice) => {
       if (choice === '1') {
-        console.log('\n ---------------------------- \nYour powerful fireball incinerates the beast. \nA smell of cooked flesh comes at you. Well done!\n');
+        console.log('\n ---------------------------- \nYour powerful fireball incinerates the beast! \nA smell of cooked flesh comes at you. Well done!\n');
         restByTroll();
       } else if (choice === '2') {
         console.log('\n ---------------------------- \nYou attempted to scream something at the troll but it looks it does not care.\nHe looks more angry. You should try something different!\n ---------------------------- \n');
@@ -263,10 +263,10 @@ function exploreTower() {
 
   rl.question('1. Go upstairs\n2. Go downstairs.', (choice) => {
     if (choice === '1') {
-      console.log('After slowly moving up the stairs, you find a wooden door. You can hear an old woman singing an unholy chant. It looks like she is cooking something.\n');
+      console.log('\n----------------------------\nAfter slowly moving up the stairs, you find a wooden door. You can hear an old woman singing an unholy chant. It looks like she is cooking something.\n');
       faceWitch();
     } else if (choice === '2') {
-      console.log('You have to light up a torch; some rats escape while you walk down the carved stairs.\nYou enter a small hall with a sarcophagus in the middle. A mighty knight is carved on it.\n----------------------------\n');
+      console.log('\n----------------------------\nYou have to light up a torch; some rats escape while you walk down the carved stairs.\nYou enter a small hall with a stone sarcophagus in the middle.\n A bearded knight is carved on the top of it.\n----------------------------\n');
       if (!hasFoundSword) {
         rl.question('Do you want to open the tomb (y/n)?', (retryChoice) => {
           if (retryChoice.toLowerCase() === 'y') {
@@ -274,9 +274,9 @@ function exploreTower() {
             inventory.push('Ancient sword');
             const asciiArt = `
         
-         ()________________________________
-[00000000[]________________________________)
-         ()                                                            
+  D       ()________________________________
+(|[]000000[]________________________________)
+  D       ()                                                            
          
          `
             console.log(asciiArt);
@@ -350,6 +350,7 @@ function faceWitch (){
   if (!chapterIntroDisplayed) {
     console.log(chalk.blue.bgRed.bold(`\n"III Chapter: The Witch"`));
     console.log('The witch stops to sing and stir the pot, looks at the party with mad eyes and says: " Who art thou? Who dares to enter my den? Trade me goods or face death!"');
+
     chapterIntroDisplayed = true; // Set the flag to true to indicate the intro has been displayed
   }
   if (character === 'Franz the Bard') {
@@ -451,6 +452,16 @@ function lootWitch() {
 
 
 function quitGame() {
-  console.log('\n ---------------------------- \n Thanks for playing the Black Tower, a text adventure game by Zorro the Scoundrel!');
+  console.log('\n ---------------------------- \n You are triumphant! After the death of the witch the peace has come again in the Swampland. \n Thanks for playing the Black Tower, a text adventure game by Zorro the Scoundrel!');
+  const asciiArt = `
+   ____
+(       )
+| () () |      * THE END! *
+  ) ^  (
+  |||||
+  |||||
+  
+  `
+console.log(asciiArt);
   rl.close();
 }
