@@ -1,4 +1,4 @@
-### GDRtheBlackTower
+# GDRtheBlackTower
 
 
 Hello and welcome to a new brand GDR, created using Javascript and NodeJS!
