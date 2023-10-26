@@ -10,7 +10,6 @@ input: process.stdin,
 output: process.stdout,
 });
 
-
 let character = null;
 let inventory = [];
 let xp = 0;
@@ -82,9 +81,6 @@ case '1':
     case '2':
         takePath();
         break;
-    // case '3':
-    //     quitGame();
-    //     break;
     default:
         console.log('Invalid choice. Please select 1, 2, or 3.');
         startGame();
@@ -142,7 +138,6 @@ function moveOverThereNow() {
 
   } else if (character === 'Roland the Mage') {
     rl.question('1. Cast a fireball\n2. Whistle and throw a stick at the Troll\n', (choice) => {
-
       if (choice === '1') {
         console.log('Your powerful fireball carbonizes the beast in a matter of seconds. \nA smell of cooked flesh comes at you. Well done!\n');
         restByTroll();
@@ -182,7 +177,6 @@ function moveOverThereNow() {
 function moveOverThere() {
   console.log('\n ---------------------------- \nThe three of you walk towards the scream, you suddenly notice a putrid black Troll, 6 feet tall.\nHe is gnawing what appears to be a dead deer.');
   console.log('What do you do?\n');
-
   if (character === 'Franz the Bard') {
     rl.question('1. Play a magic song with your flute\n2. Is just one troll, you can easily kill it with your blade!\n', (choice) => {
       if (choice === '1') {
@@ -205,7 +199,7 @@ function moveOverThere() {
             |||||`
 console.log(asciiArt);
           quitGame()
-          rl.close(); // You can implement additional game-over logic here
+          rl.close(); 
         } else {
           console.log(chalk.blue.bgYellowBright.bold(`You have ${hp} HP left`));
           restByTroll(); // Continue the game after the fight
@@ -448,8 +442,6 @@ function lootWitch() {
     quitGame ();
   });
 }
-
-
 
 function quitGame() {
   console.log('\n ---------------------------- \n You are triumphant! After the death of the witch the peace has come again in the Swampland. \n Thanks for playing the Black Tower, a text adventure game by Zorro the Scoundrel!');
